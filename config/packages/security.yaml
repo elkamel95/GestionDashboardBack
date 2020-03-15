@@ -21,12 +21,12 @@ security:
         login:
             pattern:  ^/api
             stateless: true
-            anonymous: false
+            anonymous: true
             form_login:
                     login_path: /login
                     check_path: /api/login_check                    
-                    username_parameter: _username
-                    password_parameter: _password
+                    username_parameter: username
+                    password_parameter: password
                     success_handler: lexik_jwt_authentication.handler.authentication_success
                     failure_handler: lexik_jwt_authentication.handler.authentication_failure
                     require_previous_session: false
@@ -47,5 +47,5 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api, roles: ROLE_ADMIN  }
+        - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
  

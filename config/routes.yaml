@@ -5,9 +5,7 @@ fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
     prefix: /register
 
-api:
-    path: /api
-    controller: App\Controller\AuthController::api
+
 
 login_check:
     path:     /api/login_check
