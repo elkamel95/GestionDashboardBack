@@ -12,10 +12,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 /**
  * @ORM\Entity
 * @ApiFilter(SearchFilter::class, properties={"id": "exact", "email": "exact"})
- * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"user", "user-read"}},
- *     "denormalization_context"={"groups"={"user", "user-write"}}
- * })
+ * @ApiResource()
  */
 class User extends BaseUser
 {
