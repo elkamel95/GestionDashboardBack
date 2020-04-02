@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
- * @ApiResource()
+ * @ApiResource(attributes={"pagination_client_items_per_page"=true})
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name_fr": "word_start",
+ *  "name_fr": "word_start" ,"name_en":"word_start","type":"exact"})
  * @ORM\Entity(repositoryClass="App\Repository\WidgetRepository")
  */
 class Widget
@@ -48,10 +52,7 @@ class Widget
      */
     private $background_color;
 
-    /**
-     * @ORM\Column(type="float" ,nullable=true)
-     */
-    private $size;
+  
 
     /**
      * @ORM\Column(type="string", length=255 ,nullable=true)
@@ -59,12 +60,12 @@ class Widget
     private $font;
 
     /**
-     * @ORM\Column(type="float" ,nullable=true)
+     * @ORM\Column(type="string" ,nullable=true,options={"default" : 0})
      */
     private $position_left;
 
     /**
-     * @ORM\Column(type="float" ,nullable=true)
+     * @ORM\Column(type="string" ,nullable=true)
      */
     private $position_right;
 
@@ -87,6 +88,31 @@ class Widget
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updateAt;
+
+    /**
+     * @ORM\Column(type="string", length=255 ,nullable=true)
+     */
+    private $width;
+
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $height;
+
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $backgroundSmallWidget;
+
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $colorSmallWidget;
+
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $size;
 
     public function getId(): ?int
     {
@@ -165,17 +191,7 @@ class Widget
         return $this;
     }
 
-    public function getSize(): ?float
-    {
-        return $this->size;
-    }
 
-    public function setSize(float $size): self
-    {
-        $this->size = $size;
-
-        return $this;
-    }
 
     public function getFont(): ?string
     {
@@ -189,24 +205,24 @@ class Widget
         return $this;
     }
 
-    public function getPositionLeft(): ?float
+    public function getPositionLeft(): ?string
     {
         return $this->position_left;
     }
 
-    public function setPositionLeft(float $position_left): self
+    public function setPositionLeft(string $position_left): self
     {
         $this->position_left = $position_left;
 
         return $this;
     }
 
-    public function getPositionRight(): ?float
+    public function getPositionRight(): ?string
     {
         return $this->position_right;
     }
 
-    public function setPositionRight(float $position_right): self
+    public function setPositionRight(string $position_right): self
     {
         $this->position_right = $position_right;
 
@@ -257,6 +273,66 @@ class Widget
     public function setUpdateAt(?string $updateAt): self
     {
         $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    public function getWidth(): ?string
+    {
+        return $this->width;
+    }
+
+    public function setWidth(string $width): self
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    public function getHeight(): ?string
+    {
+        return $this->height;
+    }
+
+    public function setHeight(string $height): self
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    public function getBackgroundSmallWidget(): ?string
+    {
+        return $this->backgroundSmallWidget;
+    }
+
+    public function setBackgroundSmallWidget(string $backgroundSmallWidget): self
+    {
+        $this->backgroundSmallWidget = $backgroundSmallWidget;
+
+        return $this;
+    }
+
+    public function getColorSmallWidget(): ?string
+    {
+        return $this->colorSmallWidget;
+    }
+
+    public function setColorSmallWidget(string $colorSmallWidget): self
+    {
+        $this->colorSmallWidget = $colorSmallWidget;
+
+        return $this;
+    }
+
+    public function getSize(): ?string
+    {
+        return $this->size;
+    }
+
+    public function setSize(string $size): self
+    {
+        $this->size = $size;
 
         return $this;
     }
