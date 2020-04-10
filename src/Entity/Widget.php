@@ -8,7 +8,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
- * @ApiResource(attributes={"pagination_client_items_per_page"=true})
+ * @ApiResource(attributes={"pagination_client_items_per_page"=true,"order"={"updateAt": "DESC"}})
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name_fr": "word_start",
  *  "name_fr": "word_start" ,"name_en":"word_start","type":"exact"})
  * @ORM\Entity(repositoryClass="App\Repository\WidgetRepository")
