@@ -6,11 +6,13 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 
 /**
- * @ApiResource(attributes={"pagination_client_items_per_page"=true,"order"={"updateAt": "DESC"}})
+ * @ApiResource(attributes={"pagination_client_items_per_page"=true})
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name_fr": "word_start",
  *  "name_fr": "word_start" ,"name_en":"word_start","type":"exact"})
+ * @ApiFilter(OrderFilter::class, properties={"updateAt","create_at"})
  * @ORM\Entity(repositoryClass="App\Repository\WidgetRepository")
  */
 class Widget
