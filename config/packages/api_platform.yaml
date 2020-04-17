@@ -5,7 +5,10 @@ api_platform:
     collection:
             pagination:
                 items_per_page_parameter_name: itemsPerPage # Default value
-
+                client_items_per_page: true # Disabled by default
+                enabled: true
+                page_parameter_name: page
+                client_enabled: true
     swagger:
          api_keys:
              apiKey:

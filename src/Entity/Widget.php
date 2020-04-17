@@ -9,12 +9,14 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 
 /**
- * @ApiResource(attributes={"pagination_client_items_per_page"=true})
- * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name_fr": "word_start",
+ * @ApiResource()
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name_fr": "partial",
  *  "name_fr": "word_start" ,"name_en":"word_start","type":"exact"})
  * @ApiFilter(OrderFilter::class, properties={"updateAt","create_at"})
  * @ORM\Entity(repositoryClass="App\Repository\WidgetRepository")
+ * @ORM\HasLifecycleCallbacks
  */
+
 class Widget
 {
     /**
@@ -22,6 +24,7 @@ class Widget
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
+ 
     private $id;
 
     /**
@@ -62,7 +65,7 @@ class Widget
     private $font;
 
     /**
-     * @ORM\Column(type="string" ,nullable=true,options={"default" : 0})
+     * @ORM\Column(type="string" ,nullable=true,options={"default" : ""})
      */
     private $position_left;
 
@@ -92,12 +95,12 @@ class Widget
     private $updateAt;
 
     /**
-     * @ORM\Column(type="string", length=255 ,nullable=true)
+     * @ORM\Column(type="float", length=255 ,nullable=true)
      */
     private $width;
 
     /**
-     * @ORM\Column(type="string", length=255,nullable=true)
+     * @ORM\Column(type="float", length=255,nullable=true)
      */
     private $height;
 
@@ -279,24 +282,24 @@ class Widget
         return $this;
     }
 
-    public function getWidth(): ?string
+    public function getWidth(): ?float
     {
         return $this->width;
     }
 
-    public function setWidth(string $width): self
+    public function setWidth(float $width): self
     {
         $this->width = $width;
 
         return $this;
     }
 
-    public function getHeight(): ?string
+    public function getHeight(): ?float
     {
         return $this->height;
     }
 
-    public function setHeight(string $height): self
+    public function setHeight(float $height): self
     {
         $this->height = $height;
 
@@ -338,4 +341,13 @@ class Widget
 
         return $this;
     }
+
+     /**
+     * @ORM\PrePersist()
+      */
+  public function setDefaultValues() {
+$this->setPositionRight('');
+$this->setPositionLeft('');
+
+}
 }
