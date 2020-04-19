@@ -19,23 +19,33 @@ class WidgetRepository extends ServiceEntityRepository
         parent::__construct($registry, Widget::class);
     }
 
-    // /**
-    //  * @return Widget[] Returns an array of Widget objects
-    //  */
-    /*
-    public function findByExampleField($value)
+  
+    public function resetPosition()
     {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('w.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $qb = $this->createQueryBuilder('w');
+        $q = $qb->update()
+                ->set('w.position_left', $qb->expr()->literal(''))
+                ->set('w.position_right', $qb->expr()->literal(''))
+                ->getQuery();
+        $p = $q->execute();
 
+     
+
+}
+public function resetPositionByType(int $type)
+{
+    $qb = $this->createQueryBuilder('w');
+    $q = $qb->update()
+            ->set('w.position_left', $qb->expr()->literal(''))
+            ->set('w.position_right', $qb->expr()->literal(''))
+            ->andWhere('w.type = :type')
+            ->setParameter('type', $type)
+            ->getQuery();
+    $p = $q->execute();
+
+ 
+
+}
     /*
     public function findOneBySomeField($value): ?Widget
     {
