@@ -11,7 +11,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 /**
  * @ApiResource()
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name_fr": "partial",
- *  "name_fr": "word_start" ,"name_en":"word_start","type":"exact"})
+ *  "name_fr": "word_start" ,"name_en":"word_start","type":"exact","users.id":"exact"})
  * @ApiFilter(OrderFilter::class, properties={"updateAt","create_at","type"})
  * @ORM\Entity(repositoryClass="App\Repository\WidgetRepository")
  * @ORM\HasLifecycleCallbacks
@@ -118,6 +118,11 @@ class Widget
      * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $size;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="widgets")
+     */
+    private $users;
 
     public function getId(): ?int
     {
@@ -350,4 +355,16 @@ $this->setPositionRight('');
 $this->setPositionLeft('');
 
 }
+
+  public function getUsers(): ?User
+  {
+      return $this->users;
+  }
+
+  public function setUsers(?User $users): self
+  {
+      $this->users = $users;
+
+      return $this;
+  }
 }

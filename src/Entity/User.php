@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use FOS\UserBundle\Model\UserInterface;
@@ -13,7 +15,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 
 /**
  * @ORM\Entity
-* @ApiFilter(SearchFilter::class, properties={"id": "exact", "email": "exact"})
+* @ApiFilter(SearchFilter::class, properties={"id": "exact", "email": "exact" ,"enabled":"exact","roles":"partial","widgets.id"})
 * @ApiResource()
  * @ApiFilter(DateFilter::class, properties={"createAt"})
 * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -58,6 +60,17 @@ class User extends BaseUser
      * @ORM\Column(type="datetime")
      */
     private $updateAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Widget", mappedBy="users")
+     */
+    private $widgets;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->widgets = new ArrayCollection();
+    }
 
     public function setFullname($fullname)
     {
@@ -112,6 +125,37 @@ class User extends BaseUser
     public function updateModifiedDatetime() {
         // update the modified time
         $this->setUpdateAt(new \DateTime());
+    }
+
+    /**
+     * @return Collection|Widget[]
+     */
+    public function getWidgets(): Collection
+    {
+        return $this->widgets;
+    }
+
+    public function addWidget(Widget $widget): self
+    {
+        if (!$this->widgets->contains($widget)) {
+            $this->widgets[] = $widget;
+            $widget->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWidget(Widget $widget): self
+    {
+        if ($this->widgets->contains($widget)) {
+            $this->widgets->removeElement($widget);
+            // set the owning side to null (unless already changed)
+            if ($widget->getUsers() === $this) {
+                $widget->setUsers(null);
+            }
+        }
+
+        return $this;
     }
 
 }
