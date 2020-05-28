@@ -15,9 +15,9 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 
 /**
  * @ORM\Entity
-* @ApiFilter(SearchFilter::class, properties={"id": "exact", "email": "exact" ,"enabled":"exact","roles":"partial","widgets.id"})
+* @ApiFilter(SearchFilter::class, properties={"id": "exact", "email": "exact" ,"enabled":"exact","roles":"partial","widgets.users.id"})
 * @ApiResource()
- * @ApiFilter(DateFilter::class, properties={"createAt"})
+* @ApiFilter(DateFilter::class, properties={"createAt","updateAt"})
 * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
 * @ORM\HasLifecycleCallbacks
  */

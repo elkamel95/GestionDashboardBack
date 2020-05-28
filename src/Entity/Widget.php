@@ -7,12 +7,15 @@ use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 
 /**
  * @ApiResource()
+  * @ApiFilter(DateFilter::class, properties={"create_at","updateAt"})
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name_fr": "partial",
  *  "name_fr": "word_start" ,"name_en":"word_start","type":"exact","users.id":"exact"})
  * @ApiFilter(OrderFilter::class, properties={"updateAt","create_at","type"})
+
  * @ORM\Entity(repositoryClass="App\Repository\WidgetRepository")
  * @ORM\HasLifecycleCallbacks
  */
