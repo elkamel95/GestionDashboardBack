@@ -38,7 +38,7 @@ class WidgetCustomController extends AbstractController
      * @Route("/api/xml/read", name="xml_readFile",  methods={"GET"})
      */
 
-  public function  loadXmlFil(){
+  public function  loadXmlFile(){
     $document = new \DOMDocument();
     $document->loadXml(file_get_contents('../configEntity.xml'));
     $crawler = new Crawler();

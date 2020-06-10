@@ -1,3 +1,4 @@
+
   <entities>
   
  <entity  identifier ="id" name= "users" enterpoint = "api/users" value="core users">
@@ -18,11 +19,13 @@
     <attribute name ="roles" value="Role" type="array">
       <property name="ROLE_ADMIN"  value="administrator" ></property >
       <property name="{}" value="members"></property >
-      
     </attribute>
 
+   <attribute name ="id" enterpoint = "api/users"    value="list email users" type="array">
+      <property name="id"  value="email" ></property >
+   </attribute>
 
-    <attribute name ="enabled" header=""  value="status" type="array">
+    <attribute name ="enabled"   value="status" type="array">
       <property name="1" value="valid"></property >
       <property name="0" value="invalid"></property >
     </attribute>
@@ -36,24 +39,17 @@
         <property name="4"  value="graphic" ></property >
 
       </attribute>
-      <attribute name = "widgets" header="the widgets that are created by this person"  value="Widgets User" type="relation"  ></attribute>
+      <attribute name = "widgets" header="all widgets created by this user" value="widgets" type="relation" ></attribute>
 
+    <attribute name = "widgets.users.id" value="current user" type="session" session_value="#currentSession#" session_name="idUser"></attribute>
   </entity>
 
 
 
-
-
-<entity   name= "fournisseur" enterpoint = "api/fournisseur" value="fournisseur">
-    <attribute name ="name_user " value="name" type="string"> </attribute>
-    <attribute name = "last_name" value="last name" type="string" ></attribute>
-    <attribute name ="email _user" value= "email" type="string"></attribute>
-  
-  </entity>
 
   <entity  identifier ="id" name= "widgets" enterpoint = "api/widgets" value="widgets">
     <attribute name ="nameFr"  header=""  value="name  (Francais)" type="string"> </attribute>
-    <attribute name = "nameEn"  header="" value="name  (Anglais)" type="string" ></attribute>
+    <attribute name = "nameEn"  value="name  (Anglais)" type="string" ></attribute>
     <attribute name = "users.id" value="current user" type="session" session_value="#currentSession#" session_name="idUser"></attribute>
 
     
@@ -70,4 +66,5 @@
       <attribute name = "users" header="The name of the user who created it" value="users" type="relation" ></attribute>
 
   </entity>
+  <required name =""  ></required> <!--  les champs obligatoires -->
 </entities>

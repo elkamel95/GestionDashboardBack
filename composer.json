@@ -1,6 +1,21 @@
 {
-    "type": "project",
-    "license": "proprietary",
+   
+        "name": "symfony/dashboard",
+        "type": "project",
+        "description": " un Api de gestion de tableau de bord sous la forme de widgets génériques, dynamique et personnalisable qui génère des besoins généraux. Sa fonction est de permettre la visualisation, la surveillance et l'exploitation facile des données pertinentes sous forme de chiffre, de données, de graphiques et la possibilité d'ajouter des fonctions sans avoir besoin de tout reprogrammer et Il permet également aux utilisateurs de créer des widgets spéciaux qui définissent le concept de base, les besoins et les idées des tâches qu'ils souhaitent appliquer aux widgets, ainsi que de concevoir l'apparence des widgets.  ",
+        "keywords": ["framework"],
+        "homepage": "https://symfony.com",
+        "license": "proprietary",
+        "authors": [
+            {
+                "name": "Fahmi Elkamel",
+                "email": "fahmielkamel@gmail.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
     "require": {
         "php": "^7.0.8",
         "ext-ctype": "*",
