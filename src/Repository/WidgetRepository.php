@@ -46,6 +46,19 @@ public function resetPositionByType(int $type)
  
 
 }
+public function updateStatus(int $status,int $id)
+{
+    $qb = $this->createQueryBuilder('w');
+    $q = $qb->update()
+            ->set('w.visible', $status)
+            ->andWhere('w.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+    $p = $q->execute();
+
+ 
+
+}
     /*
     public function findOneBySomeField($value): ?Widget
     {

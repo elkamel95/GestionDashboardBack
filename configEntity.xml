@@ -14,16 +14,15 @@
     <attribute name = "updateAt" header=""  value="update date" type="date"></attribute>
 
     <attribute name = "prix" header=""  value="prix" type="numeric"></attribute>
-
-
     <attribute name ="roles" value="Role" type="array">
       <property name="ROLE_ADMIN"  value="administrator" ></property >
-      <property name="{}" value="members"></property >
+      <property name="ROLE_USER" value="members"></property >
     </attribute>
 
    <attribute name ="id" enterpoint = "api/users"    value="list email users" type="array">
       <property name="id"  value="email" ></property >
    </attribute>
+<!--<option value="id">{{email}}</option>-->
 
     <attribute name ="enabled"   value="status" type="array">
       <property name="1" value="valid"></property >

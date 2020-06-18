@@ -33,7 +33,18 @@ class WidgetCustomController extends AbstractController
     return new Response($WidgetServiceJson, Response::HTTP_OK, ['content-type' => 'application/json']);   
 
   }
+ /**
+     * @Route("/api/update/{status}/{id}", name="visibilityWidget",  methods={"PUT"})
+     */
 
+    public function updateStatusWidget(int $status, int $id,WidgetRepository $WidgetService)
+    {
+      $WidgetService->  updateStatus( $status,$id);
+      $serializer = $this->container->get('serializer');
+      $WidgetServiceJson = $serializer->serialize($WidgetService, 'json');
+      return new Response($WidgetServiceJson, Response::HTTP_OK, ['content-type' => 'application/json']);   
+  
+    }
     /**
      * @Route("/api/xml/read", name="xml_readFile",  methods={"GET"})
      */

@@ -8,6 +8,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 
 /**
  * @ApiResource()
@@ -15,6 +16,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name_fr": "partial",
  *  "name_fr": "word_start" ,"name_en":"word_start","type":"exact","users.id":"exact"})
  * @ApiFilter(OrderFilter::class, properties={"updateAt","create_at","type"})
+ * @ApiFilter(BooleanFilter::class, properties={"visible"})
 
  * @ORM\Entity(repositoryClass="App\Repository\WidgetRepository")
  * @ORM\HasLifecycleCallbacks
@@ -88,7 +90,7 @@ class Widget
     private $create_at;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true ,options={"default" : 1})
+     * @ORM\Column(type="boolean", nullable=true ,options={"default" : 0})
      */
     private $visible;
 
