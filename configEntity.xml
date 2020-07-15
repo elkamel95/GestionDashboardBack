@@ -65,5 +65,49 @@
       <attribute name = "users" header="The name of the user who created it" value="users" type="relation" ></attribute>
 
   </entity>
+
+ <entity  identifier ="id" name= "PurchaseRequests" enterpoint = "api/purchase_requests" value="Purchases Requests"> 
+     <attribute name ="title" header=""  value="Title" type="string"> </attribute>
+     <attribute name ="status" header=""  value="Status" type="array"> 
+     <property name="waiting_for_validation"  value="waiting for validation" ></property >
+     <property name="draft"  value="draft" ></property >
+     <property name="ordered"  value="ordered" ></property >
+     <property name="canceled"  value="canceled" ></property >
+     <property name="refused"  value="refused" ></property >
+     <property name="validated"  value="validated" ></property >
+     <property name="modified_and_waiting_for_validation"  value="modified and waiting for validation" ></property >
+     <property name="partially_ ordered"  value="partially ordered" ></property >
+     </attribute>
+
+     <attribute name ="price"    header="Price (DT)"  value="Price" type="numeric"> </attribute>
+     <attribute name ="enabled"    header=""  value="Enabled" type="boolean"> </attribute>
+     <attribute name ="createdAt"  header="Creation date"  value="Creation Date" type="date"> </attribute>
+     <attribute name ="updatedAt"  header="Update date"  value="Update Date" type="date"> </attribute>
+
+  </entity>
+   <entity  identifier ="id" name= "PurchaseOrder" enterpoint = "api/purchase_orders" value="Purchases Orders"> 
+     <attribute name ="title" header=""  value="Title" type="string"> </attribute>
+     <attribute name ="status" header=""  value="Status" type="array"> 
+     <property name="waiting_for_validation"  value="waiting for validation" ></property >
+     <property name="modified_and_waiting_for_validation"  value="modified and waiting for validation" ></property >
+     <property name="validated"  value="validated" ></property >
+     <property name="refused"  value="refused" ></property >
+     <property name="canceled"  value="canceled" ></property >
+
+     <property name="draft"  value="draft" ></property >
+     <property name="initial_partial_delivery"  value="initial partial delivery" ></property >
+     <property name="partial_delivery"  value="partial delivery" ></property >
+     <property name="partial_paid"  value="partial paid" ></property >
+     <property name="initial_delivered"  value="initial delivered" ></property >
+     <property name="delivered"  value="delivered" ></property >
+     <property name="paid"  value="paid" ></property >
+
+     </attribute>
+     <attribute name ="price"    header="Price (DT)"  value="Price" type="numeric"> </attribute>
+     <attribute name ="enabled"    header=""  value="Enabled" type="boolean"> </attribute>
+     <attribute name ="createdAt"  header="Creation Date"  value="Creation date" type="date"> </attribute>
+     <attribute name ="updatedAt"  header="Update Date"  value="Update date" type="date"> </attribute>
+
+  </entity>
   <required name =""  ></required> <!--  les champs obligatoires -->
 </entities>
