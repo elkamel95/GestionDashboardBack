@@ -15,7 +15,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 
 /**
  * @ORM\Entity
-* @ApiFilter(SearchFilter::class, properties={"id": "exact", "email": "exact" ,"enabled":"exact","roles":"partial","widgets.users.id"})
+* @ApiFilter(SearchFilter::class, properties={"id": "exact", "email": "exact" ,"enabled":"exact","roles":"partial","widgets.users.id":"exact","widgets.type":"exact"})
 * @ApiResource()
 * @ApiFilter(DateFilter::class, properties={"createAt","updateAt"})
 * @ORM\Entity(repositoryClass="App\Repository\UserRepository")

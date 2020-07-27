@@ -30,7 +30,7 @@
     </attribute>
     <attribute name ="isActive" value="isActive" type="boolean"></attribute>
 
-      <attribute name ="users.type" value= "type" type="array">
+      <attribute name ="widgets.type" value= "type Widget" type="array">
 
         <property name="1"  value="indicator" ></property >
         <property name="2"  value="indicator with list" ></property >
@@ -62,11 +62,14 @@
         <property name="4"  value="graphic" ></property >
 
       </attribute>
+          <attribute name = "visible"  value="visible" type="boolean" ></attribute>
+
+      
       <attribute name = "users" header="The name of the user who created it" value="users" type="relation" ></attribute>
 
   </entity>
 
- <entity  identifier ="id" name= "PurchaseRequests" enterpoint = "api/purchase_requests" value="Purchases Requests"> 
+ <entity  identifier ="id" name= "PurchaseRequests" enterpoint = "api/purchase_requests" value="Commande"> 
      <attribute name ="title" header=""  value="Title" type="string"> </attribute>
      <attribute name ="status" header=""  value="Status" type="array"> 
      <property name="waiting_for_validation"  value="waiting for validation" ></property >
@@ -81,11 +84,11 @@
 
      <attribute name ="price"    header="Price (DT)"  value="Price" type="numeric"> </attribute>
      <attribute name ="enabled"    header=""  value="Enabled" type="boolean"> </attribute>
-     <attribute name ="createdAt"  header="Creation date"  value="Creation Date" type="date"> </attribute>
-     <attribute name ="updatedAt"  header="Update date"  value="Update Date" type="date"> </attribute>
+     <attribute name ="created_at"  header="Creation date"  value="Creation Date" type="date"> </attribute>
+     <attribute name ="updated_at"  header="Update date"  value="Update Date" type="date"> </attribute>
 
   </entity>
-   <entity  identifier ="id" name= "PurchaseOrder" enterpoint = "api/purchase_orders" value="Purchases Orders"> 
+   <entity  identifier ="id" name= "PurchaseOrder" enterpoint = "api/purchase_orders" value="Précommande"> 
      <attribute name ="title" header=""  value="Title" type="string"> </attribute>
      <attribute name ="status" header=""  value="Status" type="array"> 
      <property name="waiting_for_validation"  value="waiting for validation" ></property >
@@ -105,8 +108,9 @@
      </attribute>
      <attribute name ="price"    header="Price (DT)"  value="Price" type="numeric"> </attribute>
      <attribute name ="enabled"    header=""  value="Enabled" type="boolean"> </attribute>
-     <attribute name ="createdAt"  header="Creation Date"  value="Creation date" type="date"> </attribute>
-     <attribute name ="updatedAt"  header="Update Date"  value="Update date" type="date"> </attribute>
+
+      <attribute name ="created_at"  header="Creation date"  value="Creation Date" type="date"> </attribute>
+     <attribute name ="updated_at"  header="Update date"  value="Update Date" type="date"> </attribute>
 
   </entity>
   <required name =""  ></required> <!--  les champs obligatoires -->

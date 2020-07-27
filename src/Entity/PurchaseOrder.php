@@ -9,7 +9,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 
 /**
  *@ApiResource()
@@ -17,7 +17,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
  * @ApiFilter(DateFilter::class, properties={"created_at", "updated_at"})
  * @ApiFilter(BooleanFilter::class, properties={"enabled"})
  * @ApiFilter(OrderFilter::class, properties={"created_at"})
- * @ApiFilter(NumericFilter::class, properties={"price"})
+ * @ApiFilter(RangeFilter::class, properties={"price"})
  * @ORM\Entity(repositoryClass="App\Repository\PurchaseOrderRepository")
  */
 class PurchaseOrder
